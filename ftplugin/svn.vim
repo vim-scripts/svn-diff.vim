@@ -1,7 +1,15 @@
 " made by Michael Scherer ( misc@mandrake.org )
-" $Id: svn.vim 146 2004-06-06 14:54:11Z misc $
-" TODO - do not ask if the new buffer should be wrote
-"        on quit
+" $Id: svn.vim 282 2005-01-31 21:24:55Z misc $
+" TODO - rewrite in pure vim functions
+"
+" 2004-09-13 : Lukas Ruf ( lukas.ruf@lpr.ch )
+"   - re-ordered windows
+"   - set focus on svn-commit.tmp (that's where one has to write)
+"   - set buffer type of new window to 'nofile' to fix 'TODO'
+"
+" 2005-01-31 : 
+"   - autoclose on exit, thanks to Gintautas Miliauskas ( gintas@akl.lt )
+"     and tips from Marius Gedminas ( mgedmin@b4net.lt )
 "
 " to use it, place it in ~/.vim and add 
 "    au BufRead svn-commit.tmp source ~/.vim/svn.vim
@@ -31,7 +39,9 @@ vim.command("new")
 win.height=len(win.buffer)+2
 # use normal to remove annoying 'hit enter messages'
 vim.command("normal :r!svn diff " + list_of_files + "\n")
-vim.command("set ft=diff")
+vim.command("set previewwindow ft=diff")
+vim.command("set buftype=nofile")
+vim.command("wincmd p")
 vim.command("wincmd R")
 vim.command('goto 1')
 
