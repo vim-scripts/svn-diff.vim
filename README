@@ -1,0 +1,8 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=978
+
+This script will show you the output of 'svn diff' when commiting changes against a subversion repository. 
+
+It open a new windows showing the diff, to help you summarizing the changes you are commiting.
+
+
+
